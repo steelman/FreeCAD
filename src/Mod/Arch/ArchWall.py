@@ -847,7 +847,11 @@ class _Wall(ArchComponent.Component):
                                         offset = obj.OffsetFirst.Value
                                     else:
                                         offset = obj.OffsetSecond.Value
-                                    for edge in self.basewires[0].Edges:
+                                    if hasattr(self.basewires[0], 'Edges'):
+                                        edges = self.basewires[0].Edges
+                                    else:
+                                        edges = self.basewires[0]
+                                    for edge in edges:
                                         while offset < (edge.Length-obj.Joint.Value):
                                             #print i," Edge ",edge," : ",edge.Length," - ",offset
                                             if offset:
