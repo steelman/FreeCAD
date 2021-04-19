@@ -1257,6 +1257,7 @@ class _Wall(ArchComponent.Component):
                                 clusterTransformed.append(edge)
                             # Only use cluster of edges rather than turning into wire
                             self.basewires.append(clusterTransformed)
+                        self.basewires = [Part.Wire(self.basewires[0])]
 
                         # Use Sketch's Normal for all edges/wires generated
                         # from sketch for consistency. Discussion on checking
