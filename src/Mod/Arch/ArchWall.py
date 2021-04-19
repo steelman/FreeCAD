@@ -847,7 +847,7 @@ class _Wall(ArchComponent.Component):
                                         offset = obj.OffsetFirst.Value
                                     else:
                                         offset = obj.OffsetSecond.Value
-                                    for edge in self.basewires[0].Edges:
+                                    for edge in self.basewires[0]:
                                         while offset < (edge.Length-obj.Joint.Value):
                                             #print i," Edge ",edge," : ",edge.Length," - ",offset
                                             if offset:
@@ -1267,7 +1267,7 @@ class _Wall(ArchComponent.Component):
                         normal = obj.Base.getGlobalPlacement().Rotation.multVec(FreeCAD.Vector(0,0,1))
 
                     else:
-                        self.basewires = obj.Base.Shape.Wires
+                        self.basewires = [obj.Base.Shape.Wires[0].Edges]
 
                         # Found case that after sorting below, direction of
                         # edges sorted are not as 'expected' thus resulted in
